@@ -2,6 +2,7 @@
 
 import random
 
+#Define functions
 def add_letters(word, num):
     new_word = ""
     for char in word:
@@ -24,8 +25,11 @@ def shift_characters(word, num):
         new_word = new_word + chr(ord(char)+num)
     return new_word
 
+#Ask user for mode selection and validate
 while True:
     mode = str(input("(e)ncode, (d)ecode or (q)uit: "))
+    
+    #Encryption
     if mode == "e":
         while True:
             key = int(input("Enter a number between 1 and 5: "))
@@ -34,6 +38,8 @@ while True:
         phrase = str(input("Enter a phrase to encode: "))
         encrypted_word = shift_characters(add_letters(phrase, key), key)
         print("Your encoded word is: %s\n" %(encrypted_word))
+    
+    #Decryption
     elif mode == "d":
         while True:
             key = int(input("Enter a number between 1 and 5: "))
@@ -42,6 +48,8 @@ while True:
         phrase = str(input("Enter a phrase to decode: "))
         decrypted_word = shift_characters(remove_letters(phrase, key), -key)
         print("Your decoded word is: %s\n" %(decrypted_word))
+    
+    #Exit program
     elif mode == "q":
         break
 
